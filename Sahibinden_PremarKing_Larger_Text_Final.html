@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premar King İlan Şablon Oluşturucu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10px;
+            line-height: 1.4;
+        }
+        h1 {
+            text-align: center;
+            color: #003D79;
+            font-size: 26px; /* Başlık boyutu büyütüldü */
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        textarea, input {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 16px; /* Yazı boyutu büyütüldü */
+        }
+        button {
+            padding: 10px 15px;
+            background: #003D79;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px; /* Buton yazı boyutu büyütüldü */
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #output {
+            margin: 15px auto;
+            padding: 15px;
+            background: #e8f4fc;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            max-width: 600px;
+            word-wrap: break-word;
+        }
+        .copy-button {
+            margin-top: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px; /* Kopyala butonu yazı boyutu büyütüldü */
+            cursor: pointer;
+        }
+        .copy-button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Premar King İlan Şablon Oluşturucu</h1>
+    <form id="propertyForm">
+        <label for="title">İlan Başlığı:</label>
+        <input type="text" id="title" required>
+
+        <label for="advantages">Öne Çıkan Avantajlar:</label>
+        <textarea id="advantages" rows="2" required></textarea>
+
+        <label for="location">Lokasyon:</label>
+        <textarea id="location" rows="2" required></textarea>
+
+        <label for="size">Büyüklük:</label>
+        <input type="text" id="size" required>
+
+        <label for="plan">Kat Planı:</label>
+        <textarea id="plan" rows="1" required></textarea>
+
+        <label for="view">Manzara ve Cephe:</label>
+        <textarea id="view" rows="1" required></textarea>
+
+        <label for="heating">Isıtma ve Enerji:</label>
+        <textarea id="heating" rows="1" required></textarea>
+
+        <label for="extras">Ekstra Özellikler:</label>
+        <textarea id="extras" rows="2" required></textarea>
+
+        <label for="structure">Yapı Durumu ve Teknik Özellikler:</label>
+        <textarea id="structure" rows="2" required></textarea>
+
+        <label for="age">Yapı Yaşı:</label>
+        <input type="text" id="age" required>
+
+        <label for="facade">İç ve Dış Cephe Durumu:</label>
+        <textarea id="facade" rows="2" required></textarea>
+
+        <label for="contact">İletişim Bilgileri (Telefon):</label>
+        <input type="text" id="contact" required>
+
+        <button type="button" onclick="generateHTML()">HTML Oluştur</button>
+    </form>
+
+    <div id="output" style="display:none;">
+        <h3 style="font-size: 20px;">Oluşturulan HTML Kodu:</h3>
+        <textarea id="generatedHTML" rows="20" readonly></textarea>
+        <button class="copy-button" onclick="copyToClipboard()">Kopyala</button>
+    </div>
+
+    <script>
+        function generateHTML() {
+            const title = document.getElementById("title").value;
+            const advantages = document.getElementById("advantages").value;
+            const location = document.getElementById("location").value;
+            const size = document.getElementById("size").value;
+            const plan = document.getElementById("plan").value;
+            const view = document.getElementById("view").value;
+            const heating = document.getElementById("heating").value;
+            const extras = document.getElementById("extras").value;
+            const structure = document.getElementById("structure").value;
+            const age = document.getElementById("age").value;
+            const facade = document.getElementById("facade").value;
+            const contact = document.getElementById("contact").value;
+
+            const htmlOutput = `
+<div style="text-align:center; font-family:Arial, sans-serif; color:#003D79;">
+    <div style="margin:5px 0;">
+        <img src="https://i.hizliresim.com/gzdcvvj.png" alt="Premar Logo" style="max-width:150px;">
+    </div>
+    <h2 style="color:#003D79; background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:26px; font-weight:bold;">${title}</h2>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">✅ Öne Çıkan Avantajlar:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;">${advantages}</p>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">⚪️ Lokasyon:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;">${location}</p>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">⭐️ Mülk Özellikleri:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Büyüklük:</strong> ${size}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Kat Planı:</strong> ${plan}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Manzara ve Cephe:</strong> ${view}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Isıtma ve Enerji:</strong> ${heating}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Ekstra Özellikler:</strong> ${extras}</p>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">✨ Yapı Durumu ve Teknik Özellikler:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;">${structure}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>Yapı Yaşı:</strong> ${age}</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;"><strong>İç ve Dış Cephe Durumu:</strong> ${facade}</p>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">☎️ İletişim:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;">${contact}</p>
+    <p style="background-color:#ffffff; padding:6px; border-radius:5px; font-weight:bold; font-size:18px;">💼 Ek Bilgi:</p>
+    <p style="background-color:#D9EDF7; padding:6px; border-radius:5px; font-size:16px;">Premar King'in geniş portföyünde size en uygun seçenekleri bulmak ve hayalinizdeki mülke sahip olmak için hemen arayın.<br>Diğer ilanlarımıza mutlaka göz atın!<br><a href="https://premarking.sahibinden.com" style="color:#003D79; text-decoration:underline;">https://premarking.sahibinden.com</a></p>
+    <div style="margin:5px 0;">
+        <img src="https://i.hizliresim.com/gzdcvvj.png" alt="Premar Logo" style="max-width:150px;">
+    </div>
+</div>
+`;
+
+            document.getElementById("generatedHTML").value = htmlOutput;
+            document.getElementById("output").style.display = "block";
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("generatedHTML");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+            alert("HTML Kodu kopyalandı!");
+        }
+    </script>
+</body>
+</html>
